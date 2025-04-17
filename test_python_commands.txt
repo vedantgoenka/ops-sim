@@ -1,0 +1,29 @@
+from googleapiclient.discovery import build
+from google.oauth2.service_account import Credentials
+
+# Configuration
+SERVICE_ACCOUNT_FILE = 'credentials.json'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+TARGET_EMAIL = '19vedant@gmail.com'
+
+# Authenticate the service account
+creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+service = build('drive', 'v3', credentials=creds)
+
+
+results = service.files().list(fields="files(id, name)").execute()
+files = results.get('files', [])
+for file in files: print(f"File ID: {file['id']}, File Name: {file['name']}")
+
+
+permission = {
+    'type': 'user',
+    'role': 'owner',
+    'emailAddress': TARGET_EMAIL
+}
+drive_service.permissions().create(
+    fileId='1--EWQkWeiqGz5gs-BAYNWlKnyuvKUOyL',
+    body=permission,
+    transferOwnership=True,
+    fields='id'
+).execute()
