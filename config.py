@@ -10,6 +10,12 @@ import json
 from pathlib import Path
 from typing import Optional, Dict, Any
 
+# Third-party imports
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 # Constants
 # ---------
 
@@ -38,6 +44,8 @@ CLIENT_SECRET_FILE = Path("client_secret.json")  # Optional
 TOKEN_PICKLE_FILE = Path("token.pickle")
 CONFIG_STORE_FILE = Path("config_store.json")
 
+# Print data path for debugging
+print(f"Using data folder path: {DATA_FOLDER_PATH}")
 
 def validate_paths() -> None:
     """Validate that required paths exist and are accessible.
