@@ -2,7 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-A Python tool for analyzing and syncing operational simulation data with Google Sheets.
+A helper tool for an operations simulation to analyze and sync data every cycle with Google Sheets.
 
 ## Overview
 
